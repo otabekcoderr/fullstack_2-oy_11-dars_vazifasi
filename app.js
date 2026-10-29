@@ -156,27 +156,27 @@ const students = [
 // mahsulot bor-yo‘qligini tekshiring. Mahsulotlar ro‘yxati va tekshiruv natijasini chiqaring.
 // filter(), map() va some() metodlaridan foydalaning.
 
-function chegirmaHisobla(products) {
-  let high_discount = products.filter((item) => item.discount >= 10);
-  console.log("1) 10% chegirmadan yuqori mahsulotlar:", high_discount);
+// function chegirmaHisobla(products) {
+//   let high_discount = products.filter((item) => item.discount >= 10);
+//   console.log("1) 10% chegirmadan yuqori mahsulotlar:", high_discount);
 
-  let new_price = high_discount.map((item) => ({
-    name: item.name,
-    price: item.price,
-    discount: item.discount,
-    stock: item.stock,
-    finalPrice: item.price - (item.price * item.discount) / 100,
-  }));
-  console.log("2) Chegirmasi hisoblangan mahsulotlar: ", new_price);
+//   let new_price = high_discount.map((item) => ({
+//     name: item.name,
+//     price: item.price,
+//     discount: item.discount,
+//     stock: item.stock,
+//     finalPrice: item.price - (item.price * item.discount) / 100,
+//   }));
+//   console.log("2) Chegirmasi hisoblangan mahsulotlar: ", new_price);
 
-  let new_price_80 = new_price.some((item) => item.finalPrice >= 800);
-  console.log(
-    "3) Chegirmali 800 dollardan yuqori mahsulot bormi: ",
-    new_price_80,
-  );
-}
+//   let new_price_80 = new_price.some((item) => item.finalPrice >= 800);
+//   console.log(
+//     "3) Chegirmali 800 dollardan yuqori mahsulot bormi: ",
+//     new_price_80,
+//   );
+// }
 
-chegirmaHisobla(products);
+// chegirmaHisobla(products);
 
 //=======================================================================
 
@@ -191,31 +191,32 @@ chegirmaHisobla(products);
 // Ustoz uchun tavsiya: 1–6-masalalarni mustaqil ishlashga, 7–8-masalalarni uy vazifasiga, 9–10-masalalarni esa
 // kuchliroq o‘quvchilar uchun yakuniy amaliy topshiriq sifatida berish mumkin. Masalalar yechimlarsiz tuzilgan
 
-// function analyz(students) {
-//   let high_score = students.filter((student) => student.score >= 60);
-//   console.log(`60 balldan yuqori bo'lgan talabalar ${high_score}`);
+function analyz(students) {
+  let high_score = students.filter((student) => student.score >= 60);
+  console.log("1) 60 balldan yuqori bo'lgan talabalar: ", high_score);
 
-//   let sort_score = high_score.sort((a, b) => b - a);
-//   console.log(`Kamayish tartibidagi ro'yxat: ${sort_score}`);
+  let sort_score = high_score.sort((a, b) => b.score - a.score);
+  console.log("2) Kamayish tartibidagi ro'yxat: ", sort_score);
 
-//   let pushJoinArr = sort_score.map((student) => ({
-//     name: student.name,
-//     score: student.score,
-//   }));
-//   console.log(`Yangi massivedagi talabalar ro'yxati: ${pushJoinArr}`);
+  let pushJoinArr = sort_score.map((student) => ({
+    name: student.name,
+    score: student.score,
+  }));
+  console.log("3) Yangi massivedagi talabalar ro'yxati: ", pushJoinArr);
 
-//   let hihg_score_find = pushJoinArr.find((item) => item.score > 90);
-//   console.log(`90 ballda yuqori o'quvchilar: ${hihg_score_find}`);
+  let hihg_score_find = pushJoinArr.find((item) => item.score > 90);
+  console.log("4) 90 ballda yuqori o'quvchilar: ", hihg_score_find);
 
-//   let bormi90 = students.some((item) => item.score >= 90);
-//   console.log(`90dan balldan yuqori balli o'quvchi bormi: ${bormi90}`);
+  let bormi90 = students.some((item) => item.score >= 90);
+  console.log("5) 90dan balldan yuqori balli o'quvchi bormi: ", bormi90);
 
-//   let hammasiBalandmi = students.every((item) => item.score >= 90);
-//   console.log(`40 balldan yuqorisi bormi: ${hammasiBalandmi}`);
+  let hammasiBalandmi = students.every((item) => item.score >= 90);
+  console.log("6) 40 balldan yuqorisi bormi: ", hammasiBalandmi);
 
-//   students.forEach((item) => {
-//     console.log(`Ism: ${item.name} ball: ${item.score}`);
-//   });
-// }
+  console.log("7) ism va ball chiqarilgan jadval: ");
+  students.forEach((item) => {
+    console.log(`Ism: ${item.name} ball: ${item.score}`);
+  });
+}
 
-// analyz(students);
+analyz(students);
