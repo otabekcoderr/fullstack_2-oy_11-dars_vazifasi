@@ -169,7 +169,7 @@ const students = [
 //   }));
 //   console.log("2) Chegirmasi hisoblangan mahsulotlar: ", new_price);
 
-//   let new_price_80 = new_price.some((item) => item.finalPrice >= 800);
+//   let new_price_80 = new_price.some((item) => item.finalPrice > 800);
 //   console.log(
 //     "3) Chegirmali 800 dollardan yuqori mahsulot bormi: ",
 //     new_price_80,
@@ -191,32 +191,32 @@ const students = [
 // Ustoz uchun tavsiya: 1–6-masalalarni mustaqil ishlashga, 7–8-masalalarni uy vazifasiga, 9–10-masalalarni esa
 // kuchliroq o‘quvchilar uchun yakuniy amaliy topshiriq sifatida berish mumkin. Masalalar yechimlarsiz tuzilgan
 
-function analyz(students) {
-  let high_score = students.filter((student) => student.score >= 60);
-  console.log("1) 60 balldan yuqori bo'lgan talabalar: ", high_score);
+// function analyz(students) {
+//   let high_score = students.filter((student) => student.score >= 60);
+//   console.log("1) 60 balldan yuqori bo'lgan talabalar: ", high_score);
 
-  let sort_score = high_score.sort((a, b) => b.score - a.score);
-  console.log("2) Kamayish tartibidagi ro'yxat: ", sort_score);
+//   let sort_score = high_score.sort((a, b) => b.score - a.score);
+//   console.log("2) Kamayish tartibidagi ro'yxat: ", sort_score);
 
-  let pushJoinArr = sort_score.map((student) => ({
-    name: student.name,
-    score: student.score,
-  }));
-  console.log("3) Yangi massivedagi talabalar ro'yxati: ", pushJoinArr);
+//   let pushJoinArr = sort_score.map((student) => ({
+//     name: student.name,
+//     score: student.score,
+//   }));
+//   console.log("3) Yangi massivedagi talabalar ro'yxati: ", pushJoinArr);
 
-  let hihg_score_find = pushJoinArr.find((item) => item.score > 90);
-  console.log("4) 90 ballda yuqori o'quvchilar: ", hihg_score_find);
+//   let hihg_score_find = pushJoinArr.find((item) => item.score > 90);
+//   console.log("4) 90 ballda yuqori o'quvchilar: ", hihg_score_find);
 
-  let bormi90 = students.some((item) => item.score >= 90);
-  console.log("5) 90dan balldan yuqori balli o'quvchi bormi: ", bormi90);
+//   let bormi90 = students.some((item) => item.score > 90);
+//   console.log("5) 90dan balldan yuqori balli o'quvchi bormi: ", bormi90);
 
-  let hammasiBalandmi = students.every((item) => item.score >= 90);
-  console.log("6) 40 balldan yuqorisi bormi: ", hammasiBalandmi);
+//   let hammasiBalandmi = students.every((item) => item.score >= 40);
+//   console.log("6) 40 balldan yuqorisi bormi: ", hammasiBalandmi);
 
-  console.log("7) ism va ball chiqarilgan jadval: ");
-  students.forEach((item) => {
-    console.log(`Ism: ${item.name} ball: ${item.score}`);
-  });
-}
+//   console.log("7) ism va ball chiqarilgan jadval: ");
+//   students.forEach((item) => {
+//     console.log(`Ism: ${item.name} ball: ${item.score}`);
+//   });
+// }
 
-analyz(students);
+// analyz(students);
