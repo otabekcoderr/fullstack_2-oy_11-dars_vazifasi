@@ -70,19 +70,14 @@ const students = [
 // chiqaring. Agar talaba topilmasa, “Talaba topilmadi” xabarini chiqaring.
 // find() metodidan foydalaning.
 
-// function talabaTop(students) {
-//   let student_top = students.find((student) => {
-//     return student.age > 18
-//       ? `${student.name} - ${student.score}`
-//       : "Talaba topilmadi";
-//   });
-
+// function talabaTop(students, student_id) {
+//   let student_top = students.find((item) => item.id === student_id);
 //   return student_top
 //     ? `${student_top.name}: ${student_top.score} ball`
 //     : "Talaba topilmadi";
 // }
 
-// console.log(talabaTop(students));
+// console.log(talabaTop(students, 4));
 
 //=======================================================================
 
@@ -127,7 +122,9 @@ const students = [
 
 // function sarala(products) {
 //   let sortla = products.sort((a, b) => a.price - b.price);
-//   return sortla;
+//   sortla.forEach((item) => {
+//     console.log(`Name: ${item.name} | Price: ${item.price}`);
+//   });
 // }
 // console.log(sarala(products));
 
@@ -140,11 +137,11 @@ const students = [
 // filter(), sort() va map() metodlaridan foydalaning.
 
 // function high_score(students) {
-//   let tartibla = students.sort((a, b) => b.score - a.score);
-//   let yuqori_ball = tartibla.filter((student) => {
+//   let yuqori_ball = students.filter((student) => {
 //     return student.score >= 70;
 //   });
-//   return yuqori_ball.map((item) => {
+//   let tartibla = yuqori_ball.sort((a, b) => b.score - a.score);
+//   return tartibla.map((item) => {
 //     return `${item.name}: ${item.score} ball`;
 //   });
 // }
@@ -159,19 +156,27 @@ const students = [
 // mahsulot bor-yo‘qligini tekshiring. Mahsulotlar ro‘yxati va tekshiruv natijasini chiqaring.
 // filter(), map() va some() metodlaridan foydalaning.
 
-// function chegirmaHisobla(products) {
-//   let high_discount = products.filter((item) => item.discount > 10);
-//   let new_price = high_discount.map((item) => ({
-//     name: item.name,
-//     price: item.price,
-//     discount: item.discount,
-//     stock: item.stock,
-//     finalPrice: item.price - (item.price * item.discount) / 100,
-//   }));
-//   return new_price.map((item) => item,);
-// }
+function chegirmaHisobla(products) {
+  let high_discount = products.filter((item) => item.discount >= 10);
+  console.log("1) 10% chegirmadan yuqori mahsulotlar:", high_discount);
 
-// console.log(chegirmaHisobla(products));
+  let new_price = high_discount.map((item) => ({
+    name: item.name,
+    price: item.price,
+    discount: item.discount,
+    stock: item.stock,
+    finalPrice: item.price - (item.price * item.discount) / 100,
+  }));
+  console.log("2) Chegirmasi hisoblangan mahsulotlar: ", new_price);
+
+  let new_price_80 = new_price.some((item) => item.finalPrice >= 800);
+  console.log(
+    "3) Chegirmali 800 dollardan yuqori mahsulot bormi: ",
+    new_price_80,
+  );
+}
+
+chegirmaHisobla(products);
 
 //=======================================================================
 
@@ -186,15 +191,31 @@ const students = [
 // Ustoz uchun tavsiya: 1–6-masalalarni mustaqil ishlashga, 7–8-masalalarni uy vazifasiga, 9–10-masalalarni esa
 // kuchliroq o‘quvchilar uchun yakuniy amaliy topshiriq sifatida berish mumkin. Masalalar yechimlarsiz tuzilgan
 
-function analyz(students) {
-  let high_score = students.filter((student) => student.score >= 60);
-  let sort_score = high_score.sort((a, b) => b - a);
-  let pushJoinArr = sort_score.map((student) => ({
-    name: student.name,
-    score: student.score,
-  }));
-  let hihg_score_find = pushJoinArr.find((item) => item.score > 90);
-  return hihg_score_find;
-}
+// function analyz(students) {
+//   let high_score = students.filter((student) => student.score >= 60);
+//   console.log(`60 balldan yuqori bo'lgan talabalar ${high_score}`);
 
-console.log(analyz(students));
+//   let sort_score = high_score.sort((a, b) => b - a);
+//   console.log(`Kamayish tartibidagi ro'yxat: ${sort_score}`);
+
+//   let pushJoinArr = sort_score.map((student) => ({
+//     name: student.name,
+//     score: student.score,
+//   }));
+//   console.log(`Yangi massivedagi talabalar ro'yxati: ${pushJoinArr}`);
+
+//   let hihg_score_find = pushJoinArr.find((item) => item.score > 90);
+//   console.log(`90 ballda yuqori o'quvchilar: ${hihg_score_find}`);
+
+//   let bormi90 = students.some((item) => item.score >= 90);
+//   console.log(`90dan balldan yuqori balli o'quvchi bormi: ${bormi90}`);
+
+//   let hammasiBalandmi = students.every((item) => item.score >= 90);
+//   console.log(`40 balldan yuqorisi bormi: ${hammasiBalandmi}`);
+
+//   students.forEach((item) => {
+//     console.log(`Ism: ${item.name} ball: ${item.score}`);
+//   });
+// }
+
+// analyz(students);
